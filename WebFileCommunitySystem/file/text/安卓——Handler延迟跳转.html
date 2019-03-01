@@ -1,0 +1,7 @@
+﻿<!DOCTYPE html><html lang='zh-cn'>
+<head>
+<meta charset='UTF-8'>
+<meta http-equiv='content - type' content='text/html; charset=UTF-8'>
+<metaname='viewport' content='width=device-width,initial-scale=1.0'/> 
+<title>安卓——Handler延迟跳转</title></head><body><div><pre style="background-color: rgb(255, 255, 255); font-family: 宋体; font-size: 9pt;">  <span style="color:#808080;font-style:italic;">//声明控制对象<br></span><span style="color:#808080;font-style:italic;">    </span>Handler handler =<span style="color:#000080;font-weight:bold;">new </span>Handler(){<br><br>        <span style="color:#808000;">@Override<br></span><span style="color:#808000;">        </span><span style="color:#000080;font-weight:bold;">public void </span>handleMessage(Message msg) {<br>            <span style="color:#000080;font-weight:bold;">super</span>.handleMessage(msg);<br>            Intent intent=<span style="color:#000080;font-weight:bold;">new </span>Intent(MainActivity.<span style="color:#000080;font-weight:bold;">this</span>,Main2Activity.<span style="color:#000080;font-weight:bold;">class</span>);<br>            startActivity (intent);<br>            finish();<br><br>        }<br>    };<br>    <span style="color:#808080;font-style:italic;">//延迟发送1000毫秒控制信息 显示主页面<br></span><span style="color:#808080;font-style:italic;">    </span>handler.sendEmptyMessageDelayed(<span style="color:#0000ff;">1</span>,<span style="color:#0000ff;">1000</span>);<br>}</pre></div>
+</body></html>

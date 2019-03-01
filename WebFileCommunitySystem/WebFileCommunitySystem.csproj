@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +46,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FreeTextBox">
+      <HintPath>C:\Users\11320\Desktop\editor\ftb\Framework-4-0\FreeTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -52,12 +59,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -84,6 +89,7 @@
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -127,8 +133,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\FreeTextBox.dll" />
+    <Content Include="css\htmleaf-demo.css" />
+    <Content Include="editor\Editor.aspx" />
+    <Content Include="fonts\icomoon.svg" />
+    <Content Include="index.html" />
+    <Content Include="js\FileSaver.js" />
+    <Content Include="js\jquery-2.1.1.min.js" />
+    <Content Include="js\jquery.wordexport.js" />
+    <Content Include="Mscontent.aspx" />
     <Content Include="About.aspx" />
-    <Content Include="App_Data\note.xml" />
     <Content Include="Community.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -144,7 +158,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="H.ashx" />
+    <Content Include="fonts\icomoon.eot" />
+    <Content Include="fonts\icomoon.ttf" />
+    <Content Include="fonts\icomoon.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="related\1.jpg" />
+    <Content Include="related\2.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -184,9 +204,29 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\DoXml.cs" />
-    <Compile Include="App_Code\Time.cs" />
+    <Compile Include="App_Code\BaseDo.cs" />
+    <Compile Include="App_Code\DirFile.cs" />
+    <Compile Include="App_Code\FileOperate.cs" />
+    <Compile Include="App_Code\INIFile.cs" />
+    <Compile Include="App_Code\PathDir.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="editor\Editor.aspx.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editor\Editor.aspx.designer.cs">
+      <DependentUpon>Editor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="H.ashx.cs">
+      <DependentUpon>H.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mscontent.aspx.cs">
+      <DependentUpon>Mscontent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mscontent.aspx.designer.cs">
+      <DependentUpon>Mscontent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,7 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\users\" />
-    <Folder Include="file\" />
+    <Folder Include="file\text\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -257,6 +297,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

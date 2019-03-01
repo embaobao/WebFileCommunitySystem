@@ -1,23 +1,144 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="WebFileCommunitySystem.Site_Mobile" %>
-<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+    <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <h1>Mobile Master Page</h1>
-        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
-        <section class="content-wrapper main-content clear-fix">
-            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-        </section>
-        <friendlyUrls:ViewSwitcher runat="server" />
-    </div>
-    </form>
-</body>
-</html>
+        <!DOCTYPE html>
+        <html xmlns="http://www.w3.org/1999/xhtml">
+
+        <head runat="server">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta charset="utf-8" />
+            <title>- We Room |PHONE Share & editor</title>
+            <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+        </head>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+        <style>
+            .radiobt {
+                border-radius: 38px;
+            }
+            
+            .fulltxt {
+                background-color: #272020;
+                z-index: 1111;
+                padding: 0px;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                color: white;
+            }
+            
+            .f-sm {
+                font-size: xx-small;
+            }
+            
+            .filedir {
+                z-index: 111111;
+                position: fixed;
+                right: 10px;
+                bottom: 10%;
+                transition: 3s;
+                -webkit-transition: 3s;
+                /* Safari */
+            }
+            
+            .filedir :hover {
+                width: auto;
+                height: auto;
+            }
+            
+            .rab {
+                border: solid 1px gray;
+                border-radius: 5px
+            }
+            
+            .rabb {
+                border: solid 1px gray;
+                border-radius: 15px
+            }
+        </style>
+        <script>
+            function dele() {
+                //var pw=prompt("请输入删除密码","ok?");
+                //   if (pw != null && pw == "ok") {
+                //       alert('删除中...')
+                //       return true;
+                //   }
+                //   else false;
+                return confirm("是否删除");
+            }
+
+            function cancel() {
+                return confirm()
+            }
+        </script>
+
+        <body>
+            <form id="form1" runat="server">
+                <asp:ScriptManager runat="server">
+                    <Scripts>
+                        <%--若要了解有关在 ScriptManager 中绑定脚本的详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                            <%--框架脚本--%>
+                                <asp:ScriptReference Name="MsAjaxBundle" />
+                                <asp:ScriptReference Name="jquery" />
+                                <asp:ScriptReference Name="bootstrap" />
+                                <asp:ScriptReference Name="respond" />
+                                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                                <asp:ScriptReference Name="WebFormsBundle" />
+                                <%--站点脚本--%>
+                    </Scripts>
+                </asp:ScriptManager>
+                <div class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" runat="server" href="~/">We Room</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a runat="server" href="~/">主页</a></li>
+
+                                <li><a runat="server" href="~/editor/Editor.aspx">在线文档</a></li>
+                                <li><a runat="server" href="~/Community.aspx">谈话室</a></li>
+                                <li><a runat="server" href="~/Contact">联系方式</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <hr />
+                <div class="container body-content">
+                    <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+                    <section class="content-wrapper main-content clear-fix">
+                        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+                    </section>
+                    <friendlyUrls:ViewSwitcher runat="server" />
+                    <hr />
+                    <footer>
+                        <a style="position: fixed; right: 5px; bottom: 8px;" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_p_XmJuVmJuVl5uTlrqclYKXm5OW1JmVlw" style="text-decoration: none;">
+                            <img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png" /></a>
+                        <p>&copy;
+                            <%:DateTime.Now+"-" %> - WE RooM-Applacation @author 吃火星的宝宝</p>
+                    </footer>
+                </div>
+            </form>
+        </body>
+
+        </html>
